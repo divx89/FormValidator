@@ -1,1 +1,144 @@
-#
+/* Import Fonts from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+/* Define frequently used variables */
+:root {
+  --success-color: #2ecc71;
+  --error-color: #e74c3c;
+}
+
+/* Global Properties */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f9fafb;
+  font-family: "Open Sans", sans-serif;
+  display: flex; /*Flex so that it is easy to align*/
+  align-items: center; /*Making items center horizontally*/
+  justify-content: center; /*Making items center inside*/
+  min-height: 100vh; /*Making contents 100 slices to the bottom*/
+  margin: 0;
+}
+
+/*  Formatting the form's container 
+    Make it a white container with a shadowed border
+*/
+.container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  width: 400px;
+}
+
+/* The heading inside the container should be centered and have a bottom margin of 20px */
+h2 {
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+/* The form itself should have all its elements have a padding */
+.form {
+  padding: 30px 40px;
+}
+
+/*  Each input, its label, and its error message is classed as .form-control
+    Each form control should have space between itself and the next element
+    We make its position relative so that its child element can be positioned absolutely, 
+    i.e. relative to its parent
+*/
+.form-control {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+/*  The label within each form control should be gray, on its own line, 
+    and have some distance between itself and the next element 
+*/
+.form-control label {
+  color: #777;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/*  Each input element should have a border with curved edges
+    which takes up the entire form width, is on its own line,
+    and has padding on all sides
+*/
+.form-control input {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/*  While we want the input boxes to have property on focus, we don't want any extra outline
+    as that looks unnatural. We remove the outline and give it a grayish border
+*/
+.form-control input:focus {
+  outline: 0;
+  border-color: #777;
+}
+
+/*  We need to ensure that if the input is validated successfully, 
+    the color of the border will change to reflect that
+    For this, we set a new class that will be dynamically put in once the validation is done.
+    To this class, we set the color
+*/
+.form-control.success input {
+  border-color: var(--success-color);
+}
+
+/*  Similar to the previous rule, we set an error class using JS if validation fails
+    and set the color to the input element in case of error
+*/
+.form-control.error input {
+  border-color: var(--error-color);
+}
+
+/*  The "small" element within a form-control class element should be hidden by default
+    and only get visible if there is actually an error, i.e. if we dynamically set
+    and additional error class to the form-control element in case of validation failure.
+
+    So, to begin with, we set its color as red, position it to the left and bottom of the 
+    form-control and make sure it is hidden
+*/
+.form-control small {
+  color: var(--error-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+/*  As mentioned above, if the error class is set to a form-control element, then the "small"
+    element within it should be made visible.
+*/
+.form-control.error small {
+  visibility: visible;
+}
+
+/*  The submit button should be formatted so that:
+    a) When the cursor is moved to it, it changes to appear as a link style cursor
+    b) It is blue with a blue border and has a border radius
+    c) The text color is white
+    d) It is on its own line
+    e) It takes up the entire width of the form
+    f) It has padding on all sides, and has a margin top so that there is space between the last element and itself
+*/
+.form button {
+  cursor: pointer;
+  background-color: #3498db;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
